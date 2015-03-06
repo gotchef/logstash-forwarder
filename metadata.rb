@@ -1,0 +1,7 @@
+name             'logstash-forwarder'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures logstash-forwarder'
+long_description 'Installs/Configures logstash-forwarder'
+version          '0.1.0'
