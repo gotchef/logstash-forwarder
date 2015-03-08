@@ -4,18 +4,16 @@
 
 include_recipe 'runit'
 
-service = node[:logstash_forwarder][:go_service]
-service_name = service[:service_name]
-config_root = "#{service[:conf_link_dir]}/#{service_name}"
+service = node[:logstash_forwarder][:service]
+service_name = service[:name]
 
-# references the whole config directory, so all configs in the directory will be picked up
-executable_path="#{service[:deploy_to]}/#{service_name}/current/bin/logstash-forwarder -config #{config_root}/active/"
+config_dir = "#{service[:config_root]}/#{service_name}"
+executable_path="#{service[:deploy_root]}/#{service_name}/current/bin/logstash-forwarder -config #{config_dir}/active/" # all json in folder
 
-log_dir = "/var/log/#{service_name}"
-
+log_dir = "#{service[:log_root]}/#{service_name}"
 directory log_dir do
-	group group
-	owner user
+	group service[:group]
+	owner service[:user]
 	mode "0775"
 	action :create
 	recursive true
@@ -23,7 +21,7 @@ end
 
 runit_service service_name do
 	default_logger true
-	sv_timeout 60
+	sv_timeout service[:timeout]
 
 	options({
 		:exec => executable_path,
