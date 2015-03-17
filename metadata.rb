@@ -8,6 +8,6 @@ version          '0.1.0'
 
 depends		'runit'
 depends		'golang'
-depends		'go-chef'
+depends		'go-service'
 depends		'consul-kio'
 

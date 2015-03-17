@@ -21,7 +21,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = {
     }
     chef.run_list = [
-		'recipe[consul-kio::server]',
 		'recipe[logstash-forwarder::default]'
     ]
   end

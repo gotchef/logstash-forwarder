@@ -5,7 +5,7 @@
 
 include_recipe 'golang'
 include_recipe 'runit'
-include_recipe 'go-chef'
+include_recipe 'go-service'
 
 service_name = node[:logstash_forwarder][:service][:name]
 

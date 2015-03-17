@@ -8,7 +8,7 @@ service = node[:logstash_forwarder][:service]
 service_name = service[:name]
 
 config_dir = "#{service[:config_root]}/#{service_name}"
-executable_path="#{service[:deploy_root]}/#{service_name}/current/bin/logstash-forwarder -config #{config_dir}/active/" # all json in folder
+executable_path="#{service[:install_root]}/#{service_name}/current/bin/logstash-forwarder -config #{config_dir}/active/" # all json in folder
 
 log_dir = "#{service[:log_root]}/#{service_name}"
 directory log_dir do
