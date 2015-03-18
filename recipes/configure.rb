@@ -14,21 +14,14 @@ end
 
 config_root = "#{service[:config_root]}/#{service_name}"
 
-directory "#{config_root}/active" do
+directory "#{config_root}" do
 	group group
 	owner user
 	mode '0775'
 	action :create
 end
 
-directory "#{config_root}/inactive" do
-	group group
-	owner user
-	mode '0775'
-	action :create
-end
-
-template "#{config_root}/active/config.json" do
+template "#{config_root}/config.json" do
 	source 'config.json.erb'
 	cookbook 'logstash-forwarder'
 	mode '0664'

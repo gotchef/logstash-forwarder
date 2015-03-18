@@ -10,7 +10,7 @@ include_recipe 'go-service'
 service_name = node[:logstash_forwarder][:service][:name]
 
 runit_service service_name do
-	action :stop 
+	action :stop
 end
 
 go_service_deploy do 
